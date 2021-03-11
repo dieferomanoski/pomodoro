@@ -6,78 +6,72 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColor().lightColor,
-        
-        body:_buildBody(context));
+        backgroundColor: ColorsModel.white, body: _buildBody(context));
   }
 
-   _buildBody(context) {
+  _buildBody(context) {
     return ListView(
-        children: [
-          _buildTopIcon(),
-          SizedBox(height: MediaQuery.of(context).size.width*0.2,),
-          _buildGreetings(),
-          _buildFormFields(context),
-          _buildButtons(context),
-          
-        ],
-      );
+      children: [
+        _buildTopIcon(),
+        SizedBox(
+          height: MediaQuery.of(context).size.width * 0.2,
+        ),
+        _buildGreetings(),
+        _buildFormFields(context),
+        _buildButtons(context),
+      ],
+    );
   }
 
-    _buildTopIcon() {
-     return Padding(
-          padding: EdgeInsets.all(32),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-            Icon(Icons.ac_unit)
-          ],),
-        );
-   }
-  
-    _buildGreetings() {
-     return Container(
-          padding: EdgeInsets.only(left:60),
-          child: Column(children: [
-           Row(children: [
-            Text("Olá my Friend!",style:TextStyle(fontSize: 28,fontWeight: FontWeight.bold)),
-          ],),
-          Row(children: [
-            Text("Sentimos a sua Falta!",style:TextStyle(fontSize: 28)),
-          ],),
-          ]),
-        );
-   }
-
-  _buildFormFields(context) { 
+  _buildTopIcon() {
     return Padding(
-      padding: const EdgeInsets.only(top:24.0),
-      child: Column(
-        children: [
-            Container(
-              width: MediaQuery.of(context).size.width*0.7,
-              child: AppText(
-                "Insira seu e-mail", "Digite seu melhor email!"
-               
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(top:16),
-              width: MediaQuery.of(context).size.width*0.7,
-              child: AppText(
-                "Insira a sua Senha", ""
-              ),
-            )
-
-
-
-        ],
-        
+      padding: EdgeInsets.all(32),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [Icon(Icons.ac_unit)],
       ),
     );
   }
-  _buildButtons(context) { 
-    return Container();
+
+  _buildGreetings() {
+    return Container(
+      padding: EdgeInsets.only(left: 60),
+      child: Column(children: [
+        Row(
+          children: [
+            Text("Olá my Friend!",
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+          ],
+        ),
+        Row(
+          children: [
+            Text("Sentimos a sua Falta!", style: TextStyle(fontSize: 28)),
+          ],
+        ),
+      ]),
+    );
   }
 
+  _buildFormFields(context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 24.0),
+      child: Column(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width * 0.7,
+            child: AppText("Insira seu e-mail", "Digite seu melhor email!"),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 16),
+            width: MediaQuery.of(context).size.width * 0.7,
+            child: AppText("Insira a sua Senha", ""),
+          )
+        ],
+      ),
+    );
+  }
+
+  _buildButtons(context) {
+    return Container();
+  }
 }
