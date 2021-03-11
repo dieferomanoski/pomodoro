@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro/ui/components/button_widget.dart';
+import 'package:pomodoro/ui/pages/login/login_page.dart';
 import 'package:pomodoro/utils/colors.dart';
+import 'package:pomodoro/utils/push.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -13,7 +15,7 @@ class WelcomePage extends StatelessWidget {
           children: [
             _imageAppLogo(),
             _welcomeMessage(),
-            _buttons(),
+            _buttons(context),
           ],
         ),
       ),
@@ -60,7 +62,7 @@ class WelcomePage extends StatelessWidget {
     );
   }
 
-  _buttons() {
+  _buttons(context) {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Row(
@@ -78,6 +80,9 @@ class WelcomePage extends StatelessWidget {
           ),
           Flexible(
             child: SimpleButton(
+              onTap: () {
+                push(context, Login());
+              },
               text: 'Faça login',
               textColor: ColorsModel.white,
               backgroundColor: ColorsModel.purple,
