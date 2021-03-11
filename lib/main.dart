@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
-
-import 'package:pomodoro/ui/pages/login/login_page.dart';
+import 'package:pomodoro/ui/pages/welcome/welcome_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +10,7 @@ class MyApp extends StatelessWidget {
     
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Login(),
+      home: WelcomePage(),
     );
   }
 }
