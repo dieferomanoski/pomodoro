@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pomodoro/utils/colors.dart';
 
 
 class AppText extends StatelessWidget {
@@ -41,14 +42,14 @@ class AppText extends StatelessWidget {
             prefixIcon: icon ?? null,      
             labelText: this.label,
             labelStyle: TextStyle(
-                color: Colors.black87, fontSize: 16, fontWeight: FontWeight.bold,fontFamily: 'Poppins-ExtraLight'),
+                color: Colors.black38, fontSize: 14, fontWeight: FontWeight.bold,fontFamily: 'Montserrat-Regular'),
             hintText: this.hint,
             hintStyle: TextStyle(  
-              color: Colors.black87,
-              fontSize: 14,
-              fontFamily: 'Poppins-ExtraLight'      
+              color: Colors.grey,
+              fontSize: 12,
+              fontFamily: 'Montserrat-Regular'      
             ),
-             errorStyle: TextStyle(fontSize: 12,fontFamily: 'Poppins-ExtraLight')),
+             errorStyle: TextStyle(fontSize: 12,fontFamily: 'Montserrat-Regular')),
       ),
     );
   }

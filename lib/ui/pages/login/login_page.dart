@@ -40,10 +40,10 @@ class Login extends StatelessWidget {
           padding: EdgeInsets.only(left:60),
           child: Column(children: [
            Row(children: [
-            Text("Olá my Friend!",style:TextStyle(fontSize: 28,fontWeight: FontWeight.bold)),
+            Text("Olá my Friend!",style:TextStyle(fontSize: 28,fontWeight: FontWeight.bold,fontFamily: 'Montserrat-SemiBold')),
           ],),
           Row(children: [
-            Text("Sentimos a sua Falta!",style:TextStyle(fontSize: 28)),
+            Text("Sentimos a sua Falta!",style:TextStyle(fontSize: 28,fontFamily: 'Montserrat-Regular')),
           ],),
           ]),
         );
@@ -57,7 +57,7 @@ class Login extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width*0.7,
               child: AppText(
-                "Insira seu e-mail", "Digite seu melhor email!"
+                "Insira seu e-mail", "E-mail"
                
               ),
             ),
@@ -65,7 +65,7 @@ class Login extends StatelessWidget {
               padding: EdgeInsets.only(top:16),
               width: MediaQuery.of(context).size.width*0.7,
               child: AppText(
-                "Insira a sua Senha", ""
+                "Insira a sua Senha", "Senha"
               ),
             )
 
