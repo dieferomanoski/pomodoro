@@ -5,9 +5,66 @@ import 'package:pomodoro/utils/colors.dart';
 class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    _buttons() {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Scaffold(
+      body: Container(
+        color: ColorsModel.white,
+        padding: EdgeInsets.only(left: 40, right: 40, top: 80, bottom: 40),
+        child: Stack(
+          children: [
+            _imageAppLogo(),
+            _welcomeMessage(),
+            _buttons(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  _imageAppLogo() {
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Image.network(
+        'https://img.icons8.com/bubbles/2x/timer.png',
+        height: 150,
+        width: 150,
+      ),
+    );
+  }
+
+  _welcomeMessage() {
+    return Align(
+      alignment: Alignment.center,
+      child: Container(
+        width: double.infinity,
+        height: 150,
+        child: Stack(
+          children: [
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "Seja bem vindo ao \nPomodoro",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 26),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Text(
+                  "Você utilizará a tecnologia em um game divertido para focar no trabalho enquanto se exercita e mantém a saúde em dia.",
+                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
+                  textAlign: TextAlign.left),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  _buttons() {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Flexible(
             child: SimpleButton(
@@ -15,6 +72,9 @@ class WelcomePage extends StatelessWidget {
               textColor: ColorsModel.white,
               backgroundColor: ColorsModel.red,
             ),
+          ),
+          SizedBox(
+            width: 30,
           ),
           Flexible(
             child: SimpleButton(
@@ -24,66 +84,6 @@ class WelcomePage extends StatelessWidget {
             ),
           ),
         ],
-      );
-    }
-
-    _welcomeMessage() {
-      return Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Seja bem vindo ao \nPomodoro",
-              textAlign: TextAlign.left,
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 26),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Flexible(
-              child: Text(
-                  "Você utilizará a tecnologia em um game divertido para focar no trabalho enquanto se exercita e mantém a saúde em dia.",
-                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
-                  textAlign: TextAlign.left),
-            ),
-          ],
-        ),
-      );
-    }
-
-    _imageAppLogo() {
-      return Container(
-          alignment: Alignment.center,
-          height: 100,
-          child: Image.network(
-              'https://www.pngitem.com/pimgs/m/61-615463_transparent-ringing-alarm-clock-png-transparent-background-timer.png'));
-    }
-
-    return Scaffold(
-      body: Container(
-        color: ColorsModel.white,
-        padding: EdgeInsets.symmetric(horizontal: 35),
-        child: Stack(
-          children: [
-            Padding(
-                padding: const EdgeInsets.symmetric(vertical: 150),
-                child: _imageAppLogo()),
-            Align(
-              alignment: Alignment.center,
-              child: Container(
-                height: 150,
-                child: _welcomeMessage(),
-              ),
-            ),
-            Align(
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 25),
-                child: _buttons(),
-              ),
-              alignment: Alignment.bottomCenter,
-            ),
-          ],
-        ),
       ),
     );
   }

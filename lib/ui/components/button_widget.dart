@@ -15,7 +15,7 @@ class SimpleButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: 150,
-        height: 70,
+        height: 60,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
           color: backgroundColor,
