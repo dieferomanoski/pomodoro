@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro/ui/components/button_widget.dart';
 import 'package:pomodoro/ui/pages/login/login_page.dart';
+import 'package:pomodoro/utils/assets.dart';
 import 'package:pomodoro/utils/colors.dart';
 import 'package:pomodoro/utils/push.dart';
 
@@ -25,10 +26,10 @@ class WelcomePage extends StatelessWidget {
   _imageAppLogo() {
     return Align(
       alignment: Alignment.topCenter,
-      child: Image.network(
-        'https://img.icons8.com/bubbles/2x/timer.png',
-        height: 150,
-        width: 150,
+      child: Image.asset(
+        AssetsModel.timerLogo,
+        height: 200,
+        width: 200,
       ),
     );
   }
@@ -46,14 +47,20 @@ class WelcomePage extends StatelessWidget {
               child: Text(
                 "Seja bem vindo ao \nPomodoro",
                 textAlign: TextAlign.left,
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 26),
+                style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 26,
+                    fontFamily: 'Montserrat-SemiBold'),
               ),
             ),
             Align(
               alignment: Alignment.bottomLeft,
               child: Text(
                   "Você utilizará a tecnologia em um game divertido para focar no trabalho enquanto se exercita e mantém a saúde em dia.",
-                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
+                  style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 18,
+                      fontFamily: 'Montserrat-Regular'),
                   textAlign: TextAlign.left),
             ),
           ],

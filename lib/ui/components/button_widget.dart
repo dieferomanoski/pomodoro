@@ -23,7 +23,8 @@ class SimpleButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: TextStyle(color: textColor),
+            style:
+                TextStyle(color: textColor, fontFamily: 'Montserrat-Regular'),
           ),
         ),
       ),
