@@ -3,12 +3,13 @@ import 'package:auth_buttons/res/shared/auth_style.dart';
 import 'package:flutter/material.dart';
 import 'package:pomodoro/ui/components/button_widget.dart';
 import 'package:pomodoro/ui/components/textfield_widget.dart';
+import 'package:pomodoro/utils/assets.dart';
 import 'package:pomodoro/utils/colors.dart';
 
 class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: _buildBody(context));
+    return Scaffold(body: _buildBody(context),backgroundColor: Colors.white);
   }
 
   _buildBody(context) {
@@ -30,7 +31,7 @@ class Login extends StatelessWidget {
       padding: EdgeInsets.all(32),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
-        children: [Image.network('https://img.icons8.com/bubbles/2x/timer.png',width: 50,height: 50,)],
+        children: [Image.asset(AssetsModel.timerLogo,width: 50,height: 50,)],
       ),
     );
   }
