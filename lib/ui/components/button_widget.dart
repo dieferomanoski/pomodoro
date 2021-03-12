@@ -5,9 +5,10 @@ class SimpleButton extends StatelessWidget {
   final Color textColor;
   final String text;
   final Function onTap;
+  final double fontSize;
 
   const SimpleButton(
-      {Key key, this.textColor, this.text, this.onTap, this.backgroundColor})
+      {Key key, this.textColor, this.text, this.onTap, this.backgroundColor,this.fontSize})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class SimpleButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: TextStyle(color: textColor),
+            style: TextStyle(color: textColor,fontFamily: 'Montserrat-Regular',fontSize: fontSize),
           ),
         ),
       ),
