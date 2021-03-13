@@ -40,7 +40,7 @@ class WelcomePage extends StatelessWidget {
       alignment: Alignment.center,
       child: Container(
         width: double.infinity,
-        height: 150,
+        height: 180,
         child: Stack(
           children: [
             Align(

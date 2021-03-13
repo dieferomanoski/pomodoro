@@ -7,6 +7,7 @@ import 'package:pomodoro/firebase/firebase_auth.dart';
 import 'package:pomodoro/services/api_response.dart';
 import 'package:pomodoro/ui/components/button_widget.dart';
 import 'package:pomodoro/ui/components/textfield_widget.dart';
+import 'package:pomodoro/ui/pages/home/home_page.dart';
 import 'package:pomodoro/utils/assets.dart';
 import 'package:pomodoro/utils/colors.dart';
 import 'package:pomodoro/utils/push.dart';
@@ -43,7 +44,13 @@ class Login extends StatelessWidget {
       padding: EdgeInsets.all(32),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
-        children: [Image.asset(AssetsModel.timerLogo,width: 50,height: 50,)],
+        children: [
+          Image.asset(
+            AssetsModel.timerLogo,
+            width: 50,
+            height: 50,
+          )
+        ],
       ),
     );
   }
@@ -134,7 +141,8 @@ class Login extends StatelessWidget {
               child: GoogleAuthButton(
                 iconSize: 20,
                 text: "Logar com o google",
-                textStyle: TextStyle(fontFamily: 'Montserrat-Regular',color: Colors.black87),
+                textStyle: TextStyle(
+                    fontFamily: 'Montserrat-Regular', color: Colors.black87),
                 borderRadius: 16,
                 onPressed: () {googleLogin(context);},
                 darkMode: false,
