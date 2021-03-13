@@ -1,14 +1,22 @@
 import 'package:auth_buttons/res/buttons/google_auth_button.dart';
+import 'package:auth_buttons/res/shared/auth_button.dart';
 import 'package:auth_buttons/res/shared/auth_style.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:pomodoro/firebase/firebase_auth.dart';
+import 'package:pomodoro/services/api_response.dart';
 import 'package:pomodoro/ui/components/button_widget.dart';
 import 'package:pomodoro/ui/components/textfield_widget.dart';
 import 'package:pomodoro/utils/assets.dart';
 import 'package:pomodoro/utils/colors.dart';
 
 class Login extends StatelessWidget {
+
+  
+
   @override
   Widget build(BuildContext context) {
+     
     return Scaffold(body: _buildBody(context),backgroundColor: Colors.white);
   }
 
@@ -96,6 +104,9 @@ class Login extends StatelessWidget {
                       )
                     ]),
                 child: SimpleButton(
+                  onTap: () { 
+                    emlLogin();
+                  },
                   text: "Logar",
                   backgroundColor: ColorsModel.purple,
                   textColor: Colors.white,
@@ -116,10 +127,11 @@ class Login extends StatelessWidget {
                     )
                   ]),
               child: GoogleAuthButton(
+                iconSize: 20,
                 text: "Logar com o google",
                 textStyle: TextStyle(fontFamily: 'Montserrat-Regular',color: Colors.black87),
                 borderRadius: 16,
-                onPressed: () {},
+                onPressed: () {googleLogin();},
                 darkMode: false,
                 iconStyle: AuthIconStyle.outlined,
               ),
@@ -127,4 +139,27 @@ class Login extends StatelessWidget {
       ],
     );
   }
+}
+
+emlLogin() async {
+
+  await Firebase.initializeApp();
+  ApiResponse response = await AuthService().login('alessandrovaiz@gmail.com', 'admin123');
+  if(response.ok) { 
+    print("DEU CERTO!!!");
+    
+  }
+  
+}
+
+googleLogin() async {
+
+  await Firebase.initializeApp();
+  ApiResponse response = await AuthService().loginGoogle();
+  if(response.ok) { 
+    print("DEU CERTO!!!");
+  }else {
+    print(response.msg);
+  }
+  
 }
