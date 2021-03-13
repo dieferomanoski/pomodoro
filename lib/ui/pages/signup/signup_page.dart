@@ -11,8 +11,9 @@ import 'package:pomodoro/utils/assets.dart';
 import 'package:pomodoro/utils/colors.dart';
 import 'package:pomodoro/utils/push.dart';
 
-class Login extends StatelessWidget {
+class SignUp extends StatelessWidget {
 
+  TextEditingController _tName = new TextEditingController();
   TextEditingController _tEmail = new TextEditingController();
   TextEditingController _tPassword = new TextEditingController();
   
@@ -28,9 +29,6 @@ class Login extends StatelessWidget {
     return ListView(
       children: [
         _buildTopIcon(),
-        SizedBox(
-          height: MediaQuery.of(context).size.width * 0.15,
-        ),
         _buildGreetings(),
         _buildFormFields(context),
         _buildButtons(context),
@@ -40,7 +38,7 @@ class Login extends StatelessWidget {
 
   _buildTopIcon() {
     return Padding(
-      padding: EdgeInsets.all(32),
+      padding: EdgeInsets.only(top:32,left: 32,right: 32,bottom: 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [Image.asset(AssetsModel.timerLogo,width: 50,height: 50,)],
@@ -52,23 +50,24 @@ class Login extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(left: 60),
       child: Column(children: [
-        Row(
-          children: [
-            Text("Olá my Friend!",
-                style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Montserrat-SemiBold')),
-          ],
-        ),
-        Row(
-          children: [
-            Text("Sentimos a sua Falta!",
-                style:
-                    TextStyle(fontSize: 28, fontFamily: 'Montserrat-Regular')),
-          ],
-        ),
-      ]),
+          Row(
+            children: [
+      Text("Seja bem vindo.",
+          style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Montserrat-SemiBold')),
+            ],
+          ),
+          Row(
+      children: [
+        Text("Estamos muito felizes \nem ter você no nosso\nApp!",
+          style:
+      TextStyle(fontSize: 28, fontFamily: 'Montserrat-Regular')),
+      ],
+            ),
+          
+        ]),
     );
   }
 
@@ -79,7 +78,12 @@ class Login extends StatelessWidget {
         children: [
           Container(
             width: MediaQuery.of(context).size.width * 0.65,
-            child: AppText("Insira seu e-mail", "E-mail",controller: _tEmail,),
+            child: AppText("Nome", "Insira seu nome",controller: _tName,),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 14),
+            width: MediaQuery.of(context).size.width * 0.65,
+            child: AppText("Insira seu melhor e-mail", "E-mail",controller: _tEmail,),
           ),
           Container(
             padding: EdgeInsets.only(top: 14),
@@ -95,10 +99,11 @@ class Login extends StatelessWidget {
     return Column(
       children: [
         Container(
+         
             padding: EdgeInsets.only(top: 32),
             width: MediaQuery.of(context).size.width * 0.65,
             child: Container(
-              height: 50,
+                 height: 50,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
@@ -110,9 +115,9 @@ class Login extends StatelessWidget {
                     ]),
                 child: SimpleButton(
                   onTap: () { 
-                    emlLogin(_tEmail.text,_tPassword.text);
+                    signUp(_tName.text,_tEmail.text,_tPassword.text);
                   },
-                  text: "Logar",
+                  text: "Fazer Cadastro",
                   backgroundColor: ColorsModel.purple,
                   textColor: Colors.white,
                 ))),
@@ -121,7 +126,7 @@ class Login extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.65,
             child: Container(
               height: 50,
-              width: MediaQuery.of(context).size.width * 0.7,
+              width: MediaQuery.of(context).size.width * 0.65,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
@@ -133,10 +138,10 @@ class Login extends StatelessWidget {
                   ]),
               child: GoogleAuthButton(
                 iconSize: 20,
-                text: "Logar com o google",
+                text: "Cadastrar com o google",
                 textStyle: TextStyle(fontFamily: 'Montserrat-Regular',color: Colors.black87),
                 borderRadius: 16,
-                onPressed: () {googleLogin(context);},
+                onPressed: () {signUpWithGoogle(context);},
                 darkMode: false,
                 iconStyle: AuthIconStyle.outlined,
               ),
@@ -146,10 +151,10 @@ class Login extends StatelessWidget {
   }
 }
 
-emlLogin(email,password) async {
+signUp(name,email,password) async {
 
   await Firebase.initializeApp();
-  ApiResponse response = await AuthService().login(email, password);
+  ApiResponse response = await AuthService().signUp(name, email, password);
   if(response.ok) { 
     print("DEU CERTO!!!");
     
@@ -160,7 +165,7 @@ emlLogin(email,password) async {
   
 }
 
-googleLogin(context) async {
+signUpWithGoogle(context) async {
 
   await Firebase.initializeApp();
   ApiResponse response = await AuthService().loginGoogle();

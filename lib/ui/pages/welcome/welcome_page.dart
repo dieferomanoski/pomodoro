@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro/ui/components/button_widget.dart';
 import 'package:pomodoro/ui/pages/login/login_page.dart';
+import 'package:pomodoro/ui/pages/signup/signup_page.dart';
 import 'package:pomodoro/utils/assets.dart';
 import 'package:pomodoro/utils/colors.dart';
 import 'package:pomodoro/utils/push.dart';
@@ -77,6 +78,9 @@ class WelcomePage extends StatelessWidget {
         children: [
           Flexible(
             child: SimpleButton(
+              onTap: (){
+                push(context,SignUp());
+              },
               text: 'Cadastre-se',
               textColor: ColorsModel.white,
               backgroundColor: ColorsModel.red,
