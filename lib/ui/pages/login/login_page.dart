@@ -9,14 +9,18 @@ import 'package:pomodoro/ui/components/button_widget.dart';
 import 'package:pomodoro/ui/components/textfield_widget.dart';
 import 'package:pomodoro/utils/assets.dart';
 import 'package:pomodoro/utils/colors.dart';
+import 'package:pomodoro/utils/push.dart';
 
 class Login extends StatelessWidget {
 
+  TextEditingController _tEmail = new TextEditingController();
+  TextEditingController _tPassword = new TextEditingController();
   
 
   @override
   Widget build(BuildContext context) {
      
+
     return Scaffold(body: _buildBody(context),backgroundColor: Colors.white);
   }
 
@@ -75,12 +79,12 @@ class Login extends StatelessWidget {
         children: [
           Container(
             width: MediaQuery.of(context).size.width * 0.7,
-            child: AppText("Insira seu e-mail", "E-mail"),
+            child: AppText("Insira seu e-mail", "E-mail",controller: _tEmail,),
           ),
           Container(
             padding: EdgeInsets.only(top: 14),
             width: MediaQuery.of(context).size.width * 0.7,
-            child: AppText("Insira a sua Senha", "Senha",password: true,),
+            child: AppText("Insira a sua Senha", "Senha",password: true,controller: _tPassword,),
           )
         ],
       ),
@@ -105,7 +109,7 @@ class Login extends StatelessWidget {
                     ]),
                 child: SimpleButton(
                   onTap: () { 
-                    emlLogin();
+                    emlLogin(_tEmail.text,_tPassword.text);
                   },
                   text: "Logar",
                   backgroundColor: ColorsModel.purple,
@@ -131,7 +135,7 @@ class Login extends StatelessWidget {
                 text: "Logar com o google",
                 textStyle: TextStyle(fontFamily: 'Montserrat-Regular',color: Colors.black87),
                 borderRadius: 16,
-                onPressed: () {googleLogin();},
+                onPressed: () {googleLogin(context);},
                 darkMode: false,
                 iconStyle: AuthIconStyle.outlined,
               ),
@@ -141,23 +145,26 @@ class Login extends StatelessWidget {
   }
 }
 
-emlLogin() async {
+emlLogin(email,password) async {
 
   await Firebase.initializeApp();
-  ApiResponse response = await AuthService().login('alessandrovaiz@gmail.com', 'admin123');
+  ApiResponse response = await AuthService().login(email, password);
   if(response.ok) { 
     print("DEU CERTO!!!");
     
   }
+  else { 
+    print("erro");
+  }
   
 }
 
-googleLogin() async {
+googleLogin(context) async {
 
   await Firebase.initializeApp();
   ApiResponse response = await AuthService().loginGoogle();
   if(response.ok) { 
-    print("DEU CERTO!!!");
+    print("deu certo");
   }else {
     print(response.msg);
   }
